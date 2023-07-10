@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(red, green, blue);
+        }
+        form{
+            width: fit-content;
+            border: 1px solid grey;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: -10px 10px 30px grey;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Student Form</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table cellpadding="10">
+                <tr>
+                    {{SFO}}
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>
