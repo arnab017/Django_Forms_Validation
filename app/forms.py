@@ -1,15 +1,11 @@
 from django import forms
-
-def sname_Validate_for_a(value):
-    if value[0].lower()=='a':
-        raise forms.ValidationError('Name should not starts with a')
-
-def sname_Validate_length(value):
-    if len(value)<=5:
-        raise forms.ValidationError('Name should not be less than 5 characters')
+from django.core import validators
 
 class StudentForm(forms.Form):
-    sid = forms.IntegerField()
-    sname = forms.CharField(max_length=50, validators=[sname_Validate_for_a,sname_Validate_length])
-    sage = forms.IntegerField()
-    smail = forms.EmailField(validators=[sname_Validate_for_a])
+    sid = forms.IntegerField(label_suffix=' ')
+    sname = forms.CharField(label_suffix=' ', max_length=50, validators=[validators.MinLengthValidator(5)])
+    sage = forms.IntegerField(label_suffix=' ',validators=[validators.MaxValueValidator(18)])
+    smail = forms.EmailField(label_suffix=' ',validators=[validators.MinLengthValidator(10)])
+    phone = forms.CharField(max_length=10, validators=[validators.RegexValidator('[6-9]\d{9}')])
+
+    
